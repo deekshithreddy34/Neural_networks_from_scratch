@@ -48,3 +48,25 @@ def sigmoid_derivative(x):
     """Derivative of sigmoid: σ(x) * (1 - σ(x))"""
     s = sigmoid(x)
     return s * (1 - s)
+
+def forward(X):
+    """
+    Forward pass through the network.
+    Returns all intermediate values (we need them for backprop).
+    """
+    # Step 1: Input to Hidden
+    # z_hidden = X @ W + b (linear combination)
+    z_hidden = np.dot(X, weights_input_hidden) + bias_hidden
+
+    # a_hidden = sigmoid(z_hidden) (activation)
+    a_hidden = sigmoid(z_hidden)
+
+    # Step 2: Hidden to Output
+    # z_output = a_hidden @ W + b
+    z_output = np.dot(a_hidden, weights_hidden_output) + bias_output
+
+    # a_output = sigmoid(z_output)
+    a_output = sigmoid(z_output)
+
+    # Return everything (we need z values for backprop)
+    return z_hidden, a_hidden, z_output, a_output
