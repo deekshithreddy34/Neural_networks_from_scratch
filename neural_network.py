@@ -39,3 +39,12 @@ print("Network initialized with random weights:")
 print(f"  Input → Hidden weights shape: {weights_input_hidden.shape}")
 print(f"  Hidden → Output weights shape: {weights_hidden_output.shape}")
 print(f"\nTotal parameters: {weights_input_hidden.size + bias_hidden.size + weights_hidden_output.size + bias_output.size}")
+
+def sigmoid(x):
+    """Squash values to range (0, 1)"""
+    return 1 / (1 + np.exp(-x))
+
+def sigmoid_derivative(x):
+    """Derivative of sigmoid: σ(x) * (1 - σ(x))"""
+    s = sigmoid(x)
+    return s * (1 - s)
