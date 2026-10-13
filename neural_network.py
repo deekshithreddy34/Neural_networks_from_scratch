@@ -79,3 +79,13 @@ for i in range(len(X)):
     print(f"Input: {X[i]} → Prediction: {predictions[i][0]:.4f} (Target: {y[i][0]})")
 
 print("\n❌ Predictions are garbage — the network hasn't learned anything yet.")
+
+
+def compute_loss(y_true, y_pred):
+    """Mean Squared Error"""
+    return np.mean((y_true - y_pred) ** 2)
+
+# Calculate initial loss
+initial_loss = compute_loss(y, predictions)
+print(f"Initial Loss (untrained): {initial_loss:.4f}")
+print("\nThis number should decrease as we train.")
