@@ -70,3 +70,12 @@ def forward(X):
 
     # Return everything (we need z values for backprop)
     return z_hidden, a_hidden, z_output, a_output
+
+z_h, a_h, z_o, predictions = forward(X)
+
+print("Forward pass with UNTRAINED network:")
+print("-" * 50)
+for i in range(len(X)):
+    print(f"Input: {X[i]} → Prediction: {predictions[i][0]:.4f} (Target: {y[i][0]})")
+
+print("\n❌ Predictions are garbage — the network hasn't learned anything yet.")
